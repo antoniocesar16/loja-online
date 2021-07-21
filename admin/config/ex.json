@@ -1,0 +1,26 @@
+{
+    "0": {
+      "ID": "1",
+      "url": "https://estilocrente.com",
+      "nome_forncecedor": "Shope Brasil",
+      "nome_produto": "O Design do Dia A Dia",
+      "img_path": "C://local",
+      "tipo": "1"
+    },
+    "1": {
+      "ID": "2",
+      "url": "https://urldois.com",
+      "nome_forncecedor": "nome do fornecedor",
+      "nome_produto": "meu produtos dois",
+      "img_path": "local da imagem",
+      "tipo": "1"
+    },
+    "2": {
+      "ID": "3",
+      "url": "url tres",
+      "nome_forncecedor": "valor tres",
+      "nome_produto": "produto tres",
+      "img_path": "local de img 3",
+      "tipo": "0"
+    }
+  }
