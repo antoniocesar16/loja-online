@@ -119,6 +119,5 @@ function animationCardOut(element) {
     var divCardUp = element.getElementsByClassName('cardUp')[0];
     divCardUp.style.display = 'none';
     divCardUp.innerHTML = '';
-    // apagando o elemento.
     // divCardUp.remove();
 }
