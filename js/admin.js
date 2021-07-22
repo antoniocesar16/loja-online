@@ -37,7 +37,7 @@ function produtosClick() {
             // produto 
             var divProduto = document.createElement('div');
             divProduto.setAttribute('class', 'produto card');
-            // Card Animation
+
             if(document.width < 550) {
                 divProduto.setAttribute('onclick', 'animationCardIn(this)');
                 divProduto.setAttribute('onmouseout', 'animationCardOut(this)');
@@ -48,21 +48,30 @@ function produtosClick() {
 
             // titulo
             var titulo = document.createElement('p');
-            titulo.setAttribute('class', 'tituloProduto')
+            titulo.setAttribute('class', 'tituloProduto');
             titulo.innerText = nome_produto;
             divProduto.appendChild(titulo);
+
             // escrevendo a divProduto.
             divProdutos.appendChild(divProduto);
             card.appendChild(divProduto);
-            //  div img do produto
+
+            //  div img do produto.
             var divImg = document.createElement('div');
             divImg.setAttribute('class', 'imgDetails');
             divProduto.appendChild(divImg);
 
+            // cardUp
+            var divCardUp = document.createElement('div');
+            divCardUp.setAttribute('class', 'cardUp');
+            // conteudo aqui
+            divProduto.appendChild(divCardUp);
+                        
+
             // img dentro da div com a classe Details
             var imgDetails = document.createElement('img');
-            imgDetails.setAttribute("src", "../img/svg/plus.png");
-            imgDetails.setAttribute("class", "imgProduto");
+            imgDetails.setAttribute('src', '../img/svg/plus.png');
+            imgDetails.setAttribute('class', 'imgProduto');
             divImg.appendChild(imgDetails);
         
         }
@@ -83,12 +92,6 @@ function configuracoesClick() {
  * @param {object} element - HTML element
  */
 function animationCardIn(element) {
-    // verificar de alguma forma se clickou no elemento.
-    var e = window.event || element;
-    console.log("alvo: " + e.target);
-    if(this === e.target) {
-        console.log("simm");
-    }
     
     var getClassCard = element.getAttribute('class');
     element.removeAttribute('class', 'cardIn');
@@ -98,16 +101,10 @@ function animationCardIn(element) {
 
     var tituloProduto = element.getElementsByClassName('tituloProduto')[0];
 
-    // cardUp
-    var divCardUp = document.createElement('div');
-    divCardUp.setAttribute('class', 'cardUp');
-    element.appendChild(divCardUp);
-    
-    var p = document.createElement('p');
-    p.style.pointerEvents = 'none'
-    p.innerHTML = "teste";
-    p.setAttribute('class', 'cardUp')
-    divCardUp.appendChild(p);
+    var divCardUp = element.getElementsByClassName('cardUp')[0];
+    divCardUp.style.display = 'flex';
+    divCardUp.style.color = 'red';
+    divCardUp.innerHTML = 'display';
 }
 
 
@@ -120,6 +117,8 @@ function animationCardOut(element) {
 
 
     var divCardUp = element.getElementsByClassName('cardUp')[0];
+    divCardUp.style.display = 'none';
+    divCardUp.innerHTML = '';
     // apagando o elemento.
-    divCardUp.remove();
+    // divCardUp.remove();
 }

@@ -58,9 +58,9 @@ a.navbar-link:hover {
     transition: all 0.4s;
 }
 
-.cardUo {
+/* .cardUo {
     pointer-events: none;
-}
+} */
 
 .inCardUp {
     position: absolute;
