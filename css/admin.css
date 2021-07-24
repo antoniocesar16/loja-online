@@ -17,9 +17,11 @@ a.navbar-link {
     margin: 1em;
     transition: all 0.5s;
 }
+
 a.navbar-link:hover {
     font-size: 95%;
 }
+
 @media screen and (max-width:700px) {
     a.navbar-link {
         font-size: 50%;
@@ -34,22 +36,25 @@ a.navbar-link:hover {
 
 /* div principal */
 #card {
+    position: relative;
     margin-top: 20%;
-    display: grid;
+    display: none;
     border-radius: 2px 2px 2px 2px;
     box-shadow: 0px 0px 10px 0 #a9a9a9;
+    padding-bottom: 2%;
 }
 
 .card {
-    margin-top: 5%;
     display: grid;
     border-radius: 2px 2px 2px 2px;
     box-shadow: 0px 0px 10px 0 #a9a9a9;
+    height: 70%;
 }
 
 .produto {
     display: flex;
-    max-height: 75%;
+    height: 90px;
+    margin: 3% 2% 2% ;
 }
 
 
@@ -58,19 +63,27 @@ a.navbar-link:hover {
     transition: all 0.4s;
 }
 
-/* .cardUo {
-    pointer-events: none;
-} */
-
 .inCardUp {
     position: absolute;
-    color: red;
+    color: black;
 }
 
 div.imgDetails {
+    display: flex;
+    flex-wrap: nowrap;
     position: absolute;
     margin-left: 90%;
 } 
+
+.cardUp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to bottom right, #1c1c1c, #2a2a2e);
+    align-items: center;
+}
 
 @media screen and (max-width:558px) {
     div.imgDetails {
@@ -78,28 +91,17 @@ div.imgDetails {
     }
 }
 
-/* nao quebrar a linha do titulo */
-.tituloProduto {
-    white-space: nowrap;
-    text-overflow: ellipsis;
+.titulo {
+    display: flex;
     flex-wrap: nowrap;
     font-size: 20pt;
 }
 
 
-.imgProduto {
+.imgProduto { 
     max-width: 50px;
     max-height: 50px;
     border-radius: 100%;
 }
 
 
-/* footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #000;
-    color: #fff;
-    text-align: center;
-} */

@@ -11,7 +11,8 @@ navConfiguracoes.addEventListener("click", configuracoesClick);
 
 function produtosClick() {
     // no duplicates
-    card.innerHTML = "";
+    card.innerHTML = '';
+    card.style.display = 'grid';
 
     // span adicionar produto.
     
@@ -22,9 +23,8 @@ function produtosClick() {
     $.ajax({
         url: './config/produtos.php',
         method: "GET",
-    }).done((data) => {
+    }).done((produtos) => {
         // adiocionar detalhes de foto
-        let produtos = data;
         for(produto in produtos) {
             var detalhes = produtos[produto];
             var id = detalhes['ID'];
@@ -40,16 +40,23 @@ function produtosClick() {
 
             if(document.width < 550) {
                 divProduto.setAttribute('onclick', 'animationCardIn(this)');
-                divProduto.setAttribute('onmouseout', 'animationCardOut(this)');
-            } else {
-                divProduto.setAttribute('onmouseover', 'animationCardIn(this)');
-                divProduto.setAttribute('onmouseout', 'animationCardOut(this)');
             }
+            divProduto.setAttribute('onmouseover', 'animationCardIn(this)');
+            divProduto.setAttribute('onmouseout', 'animationCardOut(this)');
+
+            // cardUp
+            var divCardUp = document.createElement('div');
+            divCardUp.setAttribute('class', 'cardUp');
+            divCardUp.style.display = 'none';
+            // conteudo aqui
+            divProduto.appendChild(divCardUp);
+                        
 
             // titulo
-            var titulo = document.createElement('p');
+            var titulo = document.createElement('div');
             titulo.setAttribute('class', 'tituloProduto');
-            titulo.innerText = nome_produto;
+            titulo.style.color = 'black';
+            titulo.innerHTML = '<p class="titulo">teste</p>';
             divProduto.appendChild(titulo);
 
             // escrevendo a divProduto.
@@ -60,13 +67,7 @@ function produtosClick() {
             var divImg = document.createElement('div');
             divImg.setAttribute('class', 'imgDetails');
             divProduto.appendChild(divImg);
-
-            // cardUp
-            var divCardUp = document.createElement('div');
-            divCardUp.setAttribute('class', 'cardUp');
-            // conteudo aqui
-            divProduto.appendChild(divCardUp);
-                        
+ 
 
             // img dentro da div com a classe Details
             var imgDetails = document.createElement('img');
@@ -100,11 +101,13 @@ function animationCardIn(element) {
     var img = element.getElementsByClassName('imgDetails')[0].style.display = 'none';
 
     var tituloProduto = element.getElementsByClassName('tituloProduto')[0];
+    tituloProduto.style.display = 'none';
 
     var divCardUp = element.getElementsByClassName('cardUp')[0];
     divCardUp.style.display = 'flex';
-    divCardUp.style.color = 'red';
-    divCardUp.innerHTML = 'display';
+    divCardUp.style.color = 'white';
+    divCardUp.style.fontSize = '20pt'
+    divCardUp.innerHTML = 'conteudo do card! adasdasdsadsdasdsadsadasdasdasdasdasdsadsadsadsad';
 }
 
 
@@ -115,9 +118,10 @@ function animationCardOut(element) {
     var img = element.getElementsByClassName('imgDetails')[0].style.display = 'initial';
     element.setAttribute('class', 'produto card');
 
+    var tituloProduto = element.getElementsByClassName('tituloProduto')[0];
+    tituloProduto.style.display = '';
 
     var divCardUp = element.getElementsByClassName('cardUp')[0];
     divCardUp.style.display = 'none';
     divCardUp.innerHTML = '';
-    // divCardUp.remove();
 }
