@@ -73,23 +73,52 @@ div.imgDetails {
     flex-wrap: nowrap;
     position: absolute;
     margin-left: 90%;
-} 
+}
 
 .cardUp {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    text-align: center;
     height: 100%;
     width: 100%;
+    color: #fff;
     background-image: linear-gradient(to bottom right, #1c1c1c, #2a2a2e);
     align-items: center;
+    font-size: 2em;
+}
+
+@media screen and (max-width:600px) {
+    div.imgDetails {
+        margin-left: 86%;
+    }
+    .cardUp {
+        font-size: 1.3em;
+    }
 }
 
 @media screen and (max-width:558px) {
     div.imgDetails {
         margin-left: 86%;
     }
+    .cardUp {
+        font-size: 1.3em;
+    }
 }
+
+@media screen and (max-width:358px) {
+    .cardUp {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width:308px) {
+    .cardUp {
+        font-size: 1rem;
+    }
+}
+
 
 .titulo {
     display: flex;
@@ -104,4 +133,11 @@ div.imgDetails {
     border-radius: 100%;
 }
 
-
+/* .btnCard {
+    position: absolute;
+    margin-left: 88%;
+    width: 10%;
+    height: 20px;
+    margin-top: 5px;
+    background-color: #1c1c1c;
+} */

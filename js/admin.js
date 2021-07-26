@@ -10,15 +10,22 @@ navConfiguracoes.addEventListener("click", configuracoesClick);
 
 
 function produtosClick() {
-    // no duplicates
+    // nao duplicar.
     card.innerHTML = '';
     card.style.display = 'grid';
+    // let btnAdicionarproduto = document.createElement('button');
+    // btnAdicionarproduto.setAttribute('class', 'btnCard')
+    // btnAdicionarproduto.addEventListener('click', () => {
+    //     card.innerHTML = '';
+    // });
+    // card.appendChild(btnAdicionarproduto);
 
     // span adicionar produto.
     
     // card
     let divProdutos = document.createElement('div');
     divProdutos.setAttribute("class", "produtos");
+
 
     $.ajax({
         url: './config/produtos.php',
@@ -105,9 +112,7 @@ function animationCardIn(element) {
 
     var divCardUp = element.getElementsByClassName('cardUp')[0];
     divCardUp.style.display = 'flex';
-    divCardUp.style.color = 'white';
-    divCardUp.style.fontSize = '20pt'
-    divCardUp.innerHTML = 'conteudo do card! adasdasdsadsdasdsadsadasdasdasdasdasdsadsadsadsad';
+    divCardUp.innerHTML = 'conteudo! adsadasdasdasdasdsadsadasdasdasdasdasdasd';
 }
 
 
