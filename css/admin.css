@@ -1,3 +1,7 @@
+/* @import url(../assets/fonts/Roboto-black.ttf); */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap');
+
+
 nav {
     display: flex;
     flex-direction: row;
@@ -166,4 +170,5 @@ div.imgDetails {
     background-color: #1c1c1c;
     color: white;
     font-size: 1em;
+    font-family: 'Roboto', sans-serif;
 }

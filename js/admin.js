@@ -10,23 +10,32 @@ navConfiguracoes.addEventListener("click", configuracoesClick);
 
 
 function produtosClick() {
-    // nao duplicar.
+
     card.innerHTML = '';
     card.style.display = 'grid';
     
+    let sectionProdutos = document.createElement('section');
+    sectionProdutos.setAttribute('id', 'produtos');
+
     let btnAdicionarproduto = document.createElement('button');
     btnAdicionarproduto.innerText = 'Novo produto';
     btnAdicionarproduto.setAttribute('id', 'btnCard')
     btnAdicionarproduto.addEventListener('click', () => {
-        card.innerHTML = 'teste';
+        document.getElementById('produtos').innerHTML = ''; // apagando os produtos.
+        let divNovoProduto = document.createElement('div');
+        let formNovoProduto = document.createElement('form');
+        divNovoProduto.setAttribute('class', 'card');
+        divNovoProduto.appendChild(formNovoProduto);
+
     });
+
     card.appendChild(btnAdicionarproduto);
+    card.appendChild(sectionProdutos);
 
     
     // card
     let divProdutos = document.createElement('div');
     divProdutos.setAttribute('class', 'produtos');
-
 
     $.ajax({
         url: './config/produtos.php',
@@ -34,16 +43,16 @@ function produtosClick() {
     }).done((produtos) => {
         // adiocionar detalhes de foto
         for(produto in produtos) {
-            var detalhes = produtos[produto];
-            var id = detalhes['ID'];
-            var url = detalhes['url'];
-            var nome_forncecedor = detalhes['nome_forncecedor'];
-            var nome_produto = detalhes['nome_produto'];
-            var img_path = detalhes['img_path'];
-            var tipo = detalhes['tipo'];
+            let detalhes = produtos[produto];
+            let id = detalhes['ID'];
+            let url = detalhes['url'];
+            let nome_forncecedor = detalhes['nome_forncecedor'];
+            let nome_produto = detalhes['nome_produto'];
+            let img_path = detalhes['img_path'];
+            let tipo = detalhes['tipo'];
 
             // produto 
-            var divProduto = document.createElement('div');
+            let divProduto = document.createElement('div');
             divProduto.setAttribute('class', 'produto card');
 
             if(document.width < 550) {
@@ -52,35 +61,33 @@ function produtosClick() {
             
             divProduto.setAttribute('onmouseover', `animationCardIn(this, "${nome_forncecedor}") `);
             divProduto.setAttribute('onmouseout', 'animationCardOut(this)');
-
             // cardUp
-            var divCardUp = document.createElement('div');
+            let divCardUp = document.createElement('div');
             divCardUp.setAttribute('class', 'cardUp');
             divCardUp.style.display = 'none';
             divProduto.appendChild(divCardUp);
 
             
             // titulo
-            var divTitulo = document.createElement('div');
+            let divTitulo = document.createElement('div');
             divTitulo.setAttribute('class', 'tituloProduto');
-            var textoTitulo = document.createElement('p');
+            let textoTitulo = document.createElement('p');
             textoTitulo.setAttribute('class', 'titulo');
             textoTitulo.innerHTML = nome_produto;
             divTitulo.appendChild(textoTitulo);
             divProduto.appendChild(divTitulo);
-
             // escrevendo a divProduto.
             divProdutos.appendChild(divProduto);
-            card.appendChild(divProduto);
+            sectionProdutos.appendChild(divProduto);
+
 
             //  div img do produto.
-            var divImg = document.createElement('div');
+            let divImg = document.createElement('div');
             divImg.setAttribute('class', 'imgDetails');
             divProduto.appendChild(divImg);
- 
 
             // img dentro da div com a classe Details
-            var imgDetails = document.createElement('img');
+            let imgDetails = document.createElement('img');
             imgDetails.setAttribute('src', '../img/svg/plus.png');
             imgDetails.setAttribute('class', 'imgProduto');
             divImg.appendChild(imgDetails);
@@ -105,16 +112,19 @@ function configuracoesClick() {
  */
 function animationCardIn(element, conteudoCardIn) {
 
-    var getClassCard = element.getAttribute('class');
+    element.getElementsByClassName('imgDetails')[0].style.display = 'none';
+
+    let getClassCard = element.getAttribute('class');
     element.removeAttribute('class', 'cardIn');
     element.setAttribute('class', `${getClassCard} cardIn`);
 
-    var img = element.getElementsByClassName('imgDetails')[0].style.display = 'none';
 
-    var tituloProduto = element.getElementsByClassName('tituloProduto')[0];
+
+    let tituloProduto = element.getElementsByClassName('tituloProduto')[0];
     tituloProduto.style.display = 'none';
 
-    var divCardUp = element.getElementsByClassName('cardUp')[0];
+
+    let divCardUp = element.getElementsByClassName('cardUp')[0];
     divCardUp.style.display = 'flex';
     divCardUp.innerHTML = conteudoCardIn;
 }
@@ -125,13 +135,15 @@ function animationCardIn(element, conteudoCardIn) {
  */
 function animationCardOut(element) {
     
-    var img = element.getElementsByClassName('imgDetails')[0].style.display = 'initial';
+    element.getElementsByClassName('imgDetails')[0].style.display = 'initial';
     element.setAttribute('class', 'produto card');
 
-    var tituloProduto = element.getElementsByClassName('tituloProduto')[0];
+
+    let tituloProduto = element.getElementsByClassName('tituloProduto')[0];
     tituloProduto.style.display = '';
 
-    var divCardUp = element.getElementsByClassName('cardUp')[0];
+
+    let divCardUp = element.getElementsByClassName('cardUp')[0];
     divCardUp.style.display = 'none';
     divCardUp.innerHTML = '';
 }
