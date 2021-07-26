@@ -19,13 +19,17 @@ function produtosClick() {
 
     let btnAdicionarproduto = document.createElement('button');
     btnAdicionarproduto.innerText = 'Novo produto';
-    btnAdicionarproduto.setAttribute('id', 'btnCard')
+    btnAdicionarproduto.setAttribute('class', 'btn-card btn-card-right');
     btnAdicionarproduto.addEventListener('click', () => {
-        document.getElementById('produtos').innerHTML = ''; // apagando os produtos.
-        let divNovoProduto = document.createElement('div');
+        // apagando os produtos.
+        document.getElementById('produtos').remove();
+        let sectionNovoProduto = document.createElement('section');
         let formNovoProduto = document.createElement('form');
-        divNovoProduto.setAttribute('class', 'card');
-        divNovoProduto.appendChild(formNovoProduto);
+
+        sectionNovoProduto.setAttribute('id', 'novoProduto');
+        sectionNovoProduto.setAttribute('class', 'card-flex');
+        sectionNovoProduto.appendChild(formNovoProduto)
+        card.appendChild(sectionNovoProduto);
 
     });
 
@@ -63,14 +67,14 @@ function produtosClick() {
             divProduto.setAttribute('onmouseout', 'animationCardOut(this)');
             // cardUp
             let divCardUp = document.createElement('div');
-            divCardUp.setAttribute('class', 'cardUp');
+            divCardUp.setAttribute('class', 'card-up');
             divCardUp.style.display = 'none';
             divProduto.appendChild(divCardUp);
 
             
             // titulo
             let divTitulo = document.createElement('div');
-            divTitulo.setAttribute('class', 'tituloProduto');
+            divTitulo.setAttribute('class', 'titulo-produto');
             let textoTitulo = document.createElement('p');
             textoTitulo.setAttribute('class', 'titulo');
             textoTitulo.innerHTML = nome_produto;
@@ -83,13 +87,13 @@ function produtosClick() {
 
             //  div img do produto.
             let divImg = document.createElement('div');
-            divImg.setAttribute('class', 'imgDetails');
+            divImg.setAttribute('class', 'img-details');
             divProduto.appendChild(divImg);
 
             // img dentro da div com a classe Details
             let imgDetails = document.createElement('img');
             imgDetails.setAttribute('src', '../img/svg/plus.png');
-            imgDetails.setAttribute('class', 'imgProduto');
+            imgDetails.setAttribute('class', 'img-produto');
             divImg.appendChild(imgDetails);
             
         }
@@ -112,19 +116,19 @@ function configuracoesClick() {
  */
 function animationCardIn(element, conteudoCardIn) {
 
-    element.getElementsByClassName('imgDetails')[0].style.display = 'none';
+    element.getElementsByClassName('img-details')[0].style.display = 'none';
 
     let getClassCard = element.getAttribute('class');
-    element.removeAttribute('class', 'cardIn');
-    element.setAttribute('class', `${getClassCard} cardIn`);
+    element.removeAttribute('class', 'card-in');
+    element.setAttribute('class', `${getClassCard} card-in`);
 
 
 
-    let tituloProduto = element.getElementsByClassName('tituloProduto')[0];
+    let tituloProduto = element.getElementsByClassName('titulo-produto')[0];
     tituloProduto.style.display = 'none';
 
 
-    let divCardUp = element.getElementsByClassName('cardUp')[0];
+    let divCardUp = element.getElementsByClassName('card-up')[0];
     divCardUp.style.display = 'flex';
     divCardUp.innerHTML = conteudoCardIn;
 }
@@ -135,15 +139,15 @@ function animationCardIn(element, conteudoCardIn) {
  */
 function animationCardOut(element) {
     
-    element.getElementsByClassName('imgDetails')[0].style.display = 'initial';
+    element.getElementsByClassName('img-details')[0].style.display = 'initial';
     element.setAttribute('class', 'produto card');
 
 
-    let tituloProduto = element.getElementsByClassName('tituloProduto')[0];
+    let tituloProduto = element.getElementsByClassName('titulo-produto')[0];
     tituloProduto.style.display = '';
 
 
-    let divCardUp = element.getElementsByClassName('cardUp')[0];
+    let divCardUp = element.getElementsByClassName('card-up')[0];
     divCardUp.style.display = 'none';
     divCardUp.innerHTML = '';
 }
