@@ -10,7 +10,7 @@ nav {
     font-size: 30pt;
 }
 
-a.navbar-link {
+span > a.navbar-link {
     text-decoration: none;
     font-size: 80%;
     color: black;
@@ -18,17 +18,39 @@ a.navbar-link {
     transition: all 0.5s;
 }
 
-a.navbar-link:hover {
+span > a.navbar-link:hover {
     font-size: 95%;
 }
 
 @media screen and (max-width:700px) {
-    a.navbar-link {
-        font-size: 50%;
+    span > a.navbar-link {
+        font-size: 80%;
         margin: 0.5em;
     }
 
-    a.navbar-link:hover {
+    span > a.navbar-link:hover {
+        font-size: 90%;
+    }
+}
+
+@media screen and (max-width:670px) {
+    span > a.navbar-link {
+        font-size: 60%;
+        margin: 0.4em;
+    }
+
+    span > a.navbar-link:hover {
+        font-size: 70%;
+    }
+}
+
+@media screen and (max-width:470px) {
+    span > a.navbar-link {
+        font-size: 50%;
+        margin: 0.4em;
+    }
+
+    span > a.navbar-link:hover {
         font-size: 60%;
     }
 }
@@ -133,11 +155,15 @@ div.imgDetails {
     border-radius: 100%;
 }
 
-/* .btnCard {
-    position: absolute;
-    margin-left: 88%;
-    width: 10%;
-    height: 20px;
+#btnCard {
+    position: relative;
+    width: 20%;
+    height: 40px;
     margin-top: 5px;
+    margin-left: calc(100% -  20% - 2%);
+    border-radius: 2px 2x 2px 2px;
+    border: none;
     background-color: #1c1c1c;
-} */
+    color: white;
+    font-size: 1em;
+}
